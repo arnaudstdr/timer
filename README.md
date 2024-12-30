@@ -1,5 +1,5 @@
 # ⏰ Timer 
-Un script Python interactif utilisant la bibliothèque `rich` pour gérer des cycles de travail et de pause. Ce script esdt utile pour augmenter la productivité en respectant des périodes de travail concentré et de courtes pauses, basé sur des principes tels que la méthode Pomodoro.
+Un script Python interactif utilisant la bibliothèque `rich` pour gérer des cycles de travail et de pause. Ce script est utile pour augmenter la productivité en respectant des périodes de travail concentré et de courtes pauses, basé sur des principes tels que la méthode Pomodoro.
 
 ## Fonctionnalités
 - **Cycles de travail et de pause** : Configurez un temps de travail et une pause est automatiquement calculée (1/5 du temps de travail).
@@ -10,7 +10,7 @@ Un script Python interactif utilisant la bibliothèque `rich` pour gérer des cy
 ## Installation
 ### Prérequis 
 - Python 3.8 ou version supérieure
-- Installer les bibliothèques nécessaires :
+- Installez les bibliothèques nécessaires :
 ```bash
 pip install -r requirements.txt
 ```
@@ -69,4 +69,4 @@ Cycle terminé ! Vous pouvez commencer un nouveau cycle ou quitter.
 Les contributions sont les bienvenues ! N'hésitez pas à soumettre une pull request ou à ouvrir une issue.
 
 ## Licence
-Ce projet est sous licence MIT. Consultez le fichier `LICENsE` pour plus de détails.
+Ce projet est sous licence MIT. Consultez le fichier `LICENSE` pour plus de détails.
