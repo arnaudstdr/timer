@@ -65,7 +65,7 @@ def countdown_timer(seconds, phase):
         time.sleep(1)
         console.clear()  # Efface la console pour mettre à jour la ligne actuelle
     console.print(f"\n{phase} [bold]terminé ![/bold]")
-    # send_push_notification("Timer", "Time's up !")
+    send_push_notification("Timer", "Time's up !")
 
 if __name__ == "__main__":
     start_timer()
