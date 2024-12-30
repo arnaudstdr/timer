@@ -26,10 +26,11 @@ def send_push_notification(title, message):
     """
 
 def start_timer():
+    cycle_count = 0
     while True:
         try:
             # Demander le temps de travail
-            work_minutes = console.input("[cyan]Entrez le temps de travail en minutes (ou 'q' pour quitter) : [/cyan]")
+            work_minutes = console.input("\n[cyan]Entrez le temps de travail en minutes (ou 'q' pour quitter) : [/cyan]")
             if work_minutes.lower() == 'q':
                 console.print("[bold green]Programme terminé. Bonne journée ![/bold green]")
                 break
@@ -37,14 +38,23 @@ def start_timer():
             work_minutes = int(work_minutes)
             work_time = work_minutes * 60  # Convertir en secondes
             pause_time = work_time // 5    # Temps de pause (1/5 du temps de travail)
+            long_pause_time = work_time // 2  #c Temps de pause longue (1/2 du temps de travail)
 
             console.print(f"\n[bold blue]Temps de travail : {work_minutes} minutes[/bold blue]")
             countdown_timer(work_time, "[bold blue]Temps de travail[/bold blue]")
 
-            console.print(f"\n[bold magenta]Temps de pause : {pause_time // 60} minutes[/bold magenta]")
-            countdown_timer(pause_time, "[bold magenta]Temps de pause[/bold magenta]")
+            # Incrémenter le compteur de cycles
+            cycle_count += 1
+
+            if cycle_count % 4 == 0:  # Si c'est le 4ème cycle
+                console.print(f"\n[bold magenta]Pause longue : {long_pause_time // 60} minutes[/bold magenta]")
+                countdown_timer(long_pause_time, "[bold magenta]Pause longue[/bold magenta]")
+            else:
+                console.print(f"\n[bold magenta]Temps de pause : {pause_time // 60} minutes[/bold magenta]")
+                countdown_timer(pause_time, "[bold magenta]Temps de pause[/bold magenta]")
 
             console.print("\n[bold yellow]Cycle terminé ! Vous pouvez commencer un nouveau cycle ou quitter.[/bold yellow]")
+            console.print(f"\nNombre de cycles : [bold cyan]{cycle_count}[/bold cyan]")
         except ValueError:
             console.print("[bold red]Erreur : Veuillez entrer un nombre valide ou 'q' pour quitter.[/bold red]")
 
@@ -54,8 +64,8 @@ def countdown_timer(seconds, phase):
         console.print(f"{phase} - Temps restant : {mins:02}:{secs:02}", end="", justify="left", highlight=False)  # Désactive la nouvelle ligne
         time.sleep(1)
         console.clear()  # Efface la console pour mettre à jour la ligne actuelle
-    console.print(f"\n{phase} [bold green]terminé ![/bold green]")
-    send_push_notification("Timer", "Time's up !")
+    console.print(f"\n{phase} [bold]terminé ![/bold]")
+    # send_push_notification("Timer", "Time's up !")
 
 if __name__ == "__main__":
     start_timer()
